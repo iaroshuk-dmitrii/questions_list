@@ -3,14 +3,15 @@ class Question {
   String question;
   List<String> answers;
   int correctAnswer;
-  bool isCorrect;
+  bool? isCorrect;
+  int? pickedAnswer;
 
   Question({
     required this.id,
     required this.question,
     required this.answers,
     required this.correctAnswer,
-    this.isCorrect = false,
+    this.isCorrect,
   });
 
   factory Question.fromJson(Map<String, dynamic> json) {

@@ -24,11 +24,16 @@ AppState reducer(AppState state, dynamic action) {
     }
   }
   if (action is CheckAnswer) {
-    if (action.answerNumber == question?.correctAnswer) {
-      question?.isCorrect = true;
-      if (questionNumber < questionsList.length) {
+    if (questionNumber < questionsList.length) {
+      if (action.answerNumber == question?.correctAnswer) {
+        question?.isCorrect = true;
         questionsList[questionNumber].isCorrect = true;
+      } else {
+        question?.isCorrect = false;
+        questionsList[questionNumber].isCorrect = false;
       }
+      question?.pickedAnswer = action.answerNumber;
+      questionsList[questionNumber].pickedAnswer = action.answerNumber;
     }
   }
   if (action is ResetTest) {

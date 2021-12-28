@@ -66,7 +66,7 @@ class TestScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: List<Widget>.generate(store.state.questionsList.length, (index) {
                               if (index < store.state.questionNumber) {
-                                if (store.state.questionsList[index].isCorrect) {
+                                if (store.state.questionsList[index].isCorrect == true) {
                                   return const Icon(Icons.check, color: Colors.green);
                                 } else {
                                   return const Icon(Icons.close, color: Colors.red);
@@ -81,7 +81,7 @@ class TestScreen extends StatelessWidget {
                 } else {
                   int correctAnswers = 0;
                   for (var element in store.state.questionsList) {
-                    element.isCorrect ? correctAnswers++ : null;
+                    element.isCorrect == true ? correctAnswers++ : null;
                   }
                   return Center(
                     child: Column(
