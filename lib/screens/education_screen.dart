@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:questions_list/business_logic/redux.dart';
 import 'package:questions_list/widgets/answer_box.dart';
+import 'package:questions_list/widgets/my_outlined_button.dart';
 import 'package:questions_list/widgets/on_will_pop_dialog.dart';
 import 'package:redux/redux.dart';
 
@@ -32,6 +33,8 @@ class EducationScreen extends StatelessWidget {
                   } else {
                     return const Text('Результаты');
                   }
+                } else if (store.state.loadingState == LoadingState.failed) {
+                  return const Text('Ошибка загрузки');
                 } else {
                   return const Text('Загрузка данных');
                 }
@@ -79,7 +82,6 @@ class EducationScreen extends StatelessWidget {
                         Expanded(child: Container()),
                         Center(
                           child: OutlinedButton(
-                            child: const Text('Следующий вопрос'),
                             onPressed: () => store.dispatch(GetNewQuestion()),
                             style: ButtonStyle(
                               alignment: Alignment.centerLeft,
@@ -94,6 +96,7 @@ class EducationScreen extends StatelessWidget {
                               ),
                               padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(20)),
                             ),
+                            child: const Text('Следующий вопрос'),
                           ),
                         ),
                       ],
@@ -117,6 +120,21 @@ class EducationScreen extends StatelessWidget {
                       ),
                     );
                   }
+                } else if (store.state.loadingState == LoadingState.failed) {
+                  return AlertDialog(
+                    title: const Text(
+                      'Ошибка загрузки',
+                      textAlign: TextAlign.center,
+                    ),
+                    actions: <Widget>[
+                      MyOutlinedButton(
+                        text: 'Веруться назад',
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
                 } else {
                   return const Center(child: CircularProgressIndicator());
                 }

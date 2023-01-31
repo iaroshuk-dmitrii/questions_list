@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnswerBox extends StatelessWidget {
-  AnswerBox({
+  const AnswerBox({
     Key? key,
     required this.text,
     this.onPressed,
@@ -10,14 +10,13 @@ class AnswerBox extends StatelessWidget {
 
   final String text;
   final VoidCallback? onPressed;
-  Color? color;
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0),
       child: OutlinedButton(
         onPressed: onPressed,
-        child: Text(text),
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color?>(color),
           alignment: Alignment.centerLeft,
@@ -32,6 +31,7 @@ class AnswerBox extends StatelessWidget {
           ),
           padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(10)),
         ),
+        child: Text(text),
       ),
     );
   }

@@ -14,22 +14,20 @@ class MyOutlinedButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: OutlinedButton(
-        child: Text(text),
         onPressed: onPressed,
         style: ButtonStyle(
+          minimumSize: MaterialStateProperty.all<Size>(const Size.fromHeight(40)),
           alignment: Alignment.center,
-          textStyle: MaterialStateProperty.all<TextStyle>(
-              const TextStyle(fontSize: 20)),
-          foregroundColor: MaterialStateProperty.all<Color>(
-              Theme.of(context).colorScheme.onSurface),
+          textStyle: MaterialStateProperty.all<TextStyle>(const TextStyle(fontSize: 20)),
+          foregroundColor: MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.onSurface),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
             ),
           ),
-          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              const EdgeInsets.all(15)),
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(15)),
         ),
+        child: Text(text),
       ),
     );
   }

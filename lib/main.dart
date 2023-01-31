@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:intl/intl.dart';
+import 'package:redux/redux.dart';
+
 import 'package:questions_list/business_logic/midlware.dart';
 import 'package:questions_list/business_logic/redux.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:questions_list/screens/initial_screen.dart';
-import 'package:redux/redux.dart';
 
 void main() {
   final Store<AppState> store = Store(
