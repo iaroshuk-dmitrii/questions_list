@@ -24,10 +24,6 @@ class TestScreen extends StatelessWidget {
       ),
       child: Scaffold(
         appBar: AppBar(
-          leading: BackButton(onPressed: () {
-            store.dispatch(ResetTest());
-            Navigator.of(context).pop();
-          }),
           title: StoreConnector<AppState, AppState>(
               converter: (store) => store.state,
               builder: (context, vm) {

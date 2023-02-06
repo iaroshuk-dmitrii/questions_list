@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Intl.defaultLocale = 'ru_Ru';
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       localizationsDelegates: const [
         GlobalWidgetsLocalizations.delegate,

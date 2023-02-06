@@ -8,6 +8,19 @@ AppState reducer(AppState state, dynamic action) {
   if (action is LoadQuestions) {
     loadingState = LoadingState.loading;
   }
+  if (action is LoadAllQuestions) {
+    //TODO заменить на получение по сети
+    loadingState = LoadingState.loaded;
+    questionsList = List<Question>.generate(
+        400,
+        (int index) => Question(
+              id: index,
+              question: 'Вопрос...($index)',
+              answers: ['Ответ...', 'Неверный ответ...'],
+              correctAnswer: 0,
+            ),
+        growable: true);
+  }
   if (action is LoadFinishedErr) {
     loadingState = LoadingState.failed;
   }
@@ -74,6 +87,10 @@ class GetNewQuestion extends Action {
 
 class LoadQuestions extends Action {
   LoadQuestions();
+}
+
+class LoadAllQuestions extends Action {
+  LoadAllQuestions();
 }
 
 class CheckAnswer extends Action {
